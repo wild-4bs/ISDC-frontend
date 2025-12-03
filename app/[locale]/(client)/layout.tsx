@@ -1,7 +1,14 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+interface Props {
+  children: React.ReactNode;
+  params: {
+    locale: string;
+  };
+}
+
+export default function Layout({ children }: Props) {
   return (
     <>
       <Header />

@@ -15,7 +15,8 @@ interface Props {
 }
 
 export default async function RootLayout({ children, params }: Props) {
-  const { locale } = await params;
+  const { locale } = params; // ✅ FIX
+
   setRequestLocale(locale);
 
   const messages = await getMessages();
@@ -23,7 +24,7 @@ export default async function RootLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} dir={dir} suppressHydrationWarning>
-      <body className={`antialiased`}>
+      <body className="antialiased">
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
