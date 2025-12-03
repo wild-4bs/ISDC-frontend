@@ -3,9 +3,6 @@ import { Header } from "@/components/Header";
 
 interface Props {
   children: React.ReactNode;
-  params: {
-    locale: string;
-  };
 }
 
 export default function Layout({ children }: Props) {

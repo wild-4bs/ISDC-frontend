@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 
 interface Props {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>; // Changed to Promise
 }
 
 export default async function RootLayout({ children, params }: Props) {
-  const { locale } = params; // ✅ FIX
+  const { locale } = await params; // Added await
 
   setRequestLocale(locale);
 
