@@ -1,0 +1,155 @@
+{
+  "home": {
+    "hero": {
+      "title": "Professional Dental Care for Every Smile",
+      "subtitle": "Discover your personalized dental care in a modern, serene space. Whether you're here for a routine check-up or to transform your smile, we're with you every step of the way."
+    },
+    "services": {
+      "title": "Smile Solutions for Every Need",
+      "caption": "Whether it's a routine check-up or a complete makeover, we provide what you need.",
+      "service-1": {
+        "title": "Dental Treatment",
+        "caption": "Preventive care and routine check-ups"
+      },
+      "service-2": {
+        "title": "Cosmetic Dentistry",
+        "caption": "Enhance your smile with whitening, veneers, and more"
+      },
+      "service-3": {
+        "title": "Orthodontics",
+        "caption": "Modern techniques to achieve perfect alignment"
+      },
+      "service-4": {
+        "title": "Fixed Prosthetics",
+        "caption": "Reliable and comfortable solutions when you need them most"
+      },
+      "service-5": {
+        "title": "3D Imaging",
+        "caption": "Fast and accurate imaging for the best results"
+      },
+      "service-6": {
+        "title": "Gum Treatment",
+        "caption": "Comprehensive care to improve gum health and appearance"
+      },
+      "service-7": {
+        "title": "Pediatric Dentistry",
+        "caption": "Gentle and caring dental care for children of all ages"
+      },
+      "service-8": {
+        "title": "Dental Implants",
+        "caption": "Advanced permanent solutions for tooth replacement"
+      }
+    },
+    "about": {
+      "title": "About us",
+      "subtitle": "10 years of experience and excellence in dentistry",
+      "caption": "With his kind and professional care, the doctor won the admiration of patients of all ages. By instantly improving smiles and alleviating anxiety, his clinic was consistently praised for its welcoming atmosphere and the extra attention that made every visit satisfying and enjoyable.",
+      "ctaButton": "Explore our Services"
+    },
+    "projects": {
+      "title": "Our Projects",
+      "caption": "We make things happen, with a fantastic team of expert doctors who will make your smile like never before."
+    },
+    "blogs": {
+      "title": "Latest news and <span>articles</span>",
+      "caption": "Stay up-to-date with the latest tips, advice, and insights on dental care. Browse our blog for expert advice and news to keep your smile healthy and bright."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "caption": "Tell us your opinion, your suggestion, your message. Your message will have a chance to be visible on the website in the testimonials section!",
+      "inputs": {
+        "email": {
+          "label": "Email",
+          "placeholder": "Enter Your Email"
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Write your message..."
+        },
+        "send": "Send"
+      }
+    }
+  },
+  "projects": {
+    "hero": {
+      "title": "A new smile <br /> A new life",
+      "caption": "Discover the real success stories of our patients and witness the amazing transformations we've achieved together."
+    },
+    "projects": {
+      "title": "Our distinctive projects",
+      "caption": "Discover the real success stories of our patients and witness the amazing transformations we've achieved together."
+    }
+  },
+  "blogs": {
+    "title": "Latest news and articles",
+    "inputs": {
+      "search": {
+        "placeholder": "Search"
+      }
+    }
+  },
+  "doctors": {
+    "hero": {
+      "title": "Our Team of Outstanding Doctors",
+      "caption": "A select group of the best specialized doctors providing the highest level of medical care"
+    },
+    "about": {
+      "title": "Meet Our Doctors",
+      "caption": "A team of specialized and qualified doctors dedicated to offering the best medical services with attention to every detail of your healthcare"
+    },
+    "yearsOfExp": "Years of Experience",
+    "modernTechs": "Modern Technologies",
+    "specDoctors": "Specialist Doctor"
+  },
+  "profile": {
+    "appointments": {
+      "title": "Latest Appointments",
+      "total": "Total Appointments",
+      "appointmentDetails": "Appointment Details",
+      "appointmentPage": {
+        "explanation": {
+          "title": "Explanation of the process and procedures followed"
+        },
+        "images": {
+          "title": "X-ray images and medical documentation"
+        }
+      }
+    }
+  },
+  "login": {
+    "title": "Welcome",
+    "email": "Email",
+    "enterYourEmail": "Enter your email",
+    "password": "Password",
+    "enterThePassword": "Enter your password",
+    "login": "Login"
+  },
+  "common": {
+    "login": "Login",
+    "readMore": "Read More",
+    "AM": "AM",
+    "PM": "PM"
+  },
+  "links": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "doctors": "Doctors",
+    "news": "News"
+  },
+  "header": {
+    "location": "Karbala – Al-Muwazzafeen District Street – near Abu Yasser Al-Shukrji Park"
+  },
+  "footer": {
+    "headline": "Are you ready to make your smile <span>shine?</span>",
+    "followUs": "Follow us:",
+    "location": "karbala'/hi almuazafina.",
+    "login": "Login",
+    "links": {
+      "blogs": "Blogs",
+      "about": "About",
+      "projects": "Projects",
+      "news": "News"
+    }
+  }
+}
