@@ -100,10 +100,10 @@ export const Input = ({
             type={type}
             data-slot="input"
             className={cn(InputVariants({ variant, size, shape, className }), {
-              "!ps-8": icon && iconPosition == "start",
-              "border-invalid-color ltr:!pr-8 selection:bg-invalid-color/80 rtl:!pl-8 focus-visible:ring-invalid-color/30 focus-visible:border-invalid-color":
+              "ps-8!": icon && iconPosition == "start",
+              "border-invalid-color ltr:pr-8! selection:bg-invalid-color/80 rtl:pl-8! focus-visible:ring-invalid-color/30 focus-visible:border-invalid-color":
                 error && error.length > 0,
-              "border-success-color selection:bg-success-color/80 ltr:!pr-8 rtl:!pl-8 focus-visible:ring-success-color/30 focus-visible:border-success-color":
+              "border-success-color selection:bg-success-color/80 ltr:pr-8! rtl:pl-8! focus-visible:ring-success-color/30 focus-visible:border-success-color":
                 success,
             })}
             {...props}

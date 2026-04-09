@@ -22,11 +22,19 @@ export default function page() {
           </h1>
           <div className="grid gap-2 mb-4">
             <Label>{trans("email")}</Label>
-            <Input placeholder={trans("enterYourEmail")} icon={<Mail />} />
+            <Input
+              placeholder={trans("enterYourEmail")}
+              icon={<Mail />}
+              size={"sm"}
+            />
           </div>
           <div className="grid gap-2">
             <Label>{trans("password")}</Label>
-            <Input placeholder={trans("enterThePassword")} icon={<Key />} />
+            <Input
+              placeholder={trans("enterThePassword")}
+              icon={<Key />}
+              size={"sm"}
+            />
           </div>
           <Button className="w-full mt-4">{trans("login")}</Button>
         </div>

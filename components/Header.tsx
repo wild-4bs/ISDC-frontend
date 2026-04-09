@@ -1,20 +1,19 @@
 "use client";
 
-import Facebook from "@/assets/social/facbook.svg";
-import Instagram from "@/assets/social/instagram.svg";
-import Whatsapp from "@/assets/social/whatsapp.svg";
-import Phone from "@/assets/social/phone.svg";
 import Location from "@/assets/icons/location.svg";
 import Logo from "@/assets/logo.svg";
+import Facebook from "@/assets/social/facbook.svg";
+import Instagram from "@/assets/social/instagram.svg";
+import Phone from "@/assets/social/phone.svg";
+import Whatsapp from "@/assets/social/whatsapp.svg";
 
 import Container from "./Container";
-import Link from "next/link";
 
-import { useLocale, useTranslations } from "next-intl";
+import { Link, usePathname, useRouter } from "@/i18n/routing";
 import clsx from "clsx";
-import { usePathname, useRouter } from "@/i18n/routing";
-import { Button } from "./ui/button";
 import { Languages, Menu, User, X } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { Button } from "./ui/button";
 
 import { useState, useTransition } from "react";
 
@@ -25,7 +24,6 @@ const NAV_LINKS = [
   { name: "news", path: "/news" },
 ];
 
-// Reusable component for rendering links
 const NavLinks = ({
   linksTrans,
   pathname,
@@ -43,7 +41,7 @@ const NavLinks = ({
           onClick={onClick}
           className={clsx(
             "text-sm leading-5 transition-colors hover:text-primary",
-            pathname === link.path && "font-bold"
+            pathname === link.path && "font-bold",
           )}
         >
           {linksTrans(link.name)}
@@ -73,11 +71,9 @@ export const Header = () => {
 
   return (
     <>
-      {/* Top Social Bar */}
       <header className="sticky top-0 left-0 w-full z-50 bg-white" dir="ltr">
-        <div className="min-h-[60px] max-md:py-4 bg-primary text-white text-sm flex items-center">
+        <div className="min-h-info-header-height max-md:py-4 bg-primary text-white text-sm flex items-center">
           <Container className="flex md:justify-between md:items-center max-md:flex-col gap-1">
-            {/* Left */}
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-4">
                 <Facebook />
@@ -90,25 +86,19 @@ export const Header = () => {
               </div>
             </div>
 
-            {/* Right */}
             <div className="flex items-center gap-2 text-sm">
               <span>{headerTrans("location")}</span>
               <Location />
             </div>
           </Container>
         </div>
-
-        {/* Main Header */}
         <Container>
-          <div className="flex items-center justify-between h-[100px]">
+          <div className="flex items-center justify-between h-links-header-height">
             <Link href="/">
               <Logo />
             </Link>
-
-            {/* Desktop Nav */}
             <ul className="hidden md:flex items-center gap-6">
               <NavLinks linksTrans={linksTrans} pathname={pathname} />
-
               <Link href={"/profile"}>
                 <Button variant={pathname == "/profile" ? "default" : "ghost"}>
                   <User size={20} />
@@ -135,8 +125,6 @@ export const Header = () => {
                 <Menu size={22} />
               </Button>
             </ul>
-
-            {/* Mobile Menu Button */}
             <Button
               variant="ghost"
               className="md:hidden"
@@ -183,7 +171,7 @@ export const Header = () => {
               <div className="mt-8 space-y-4">
                 <Link href={"/profile"} className="w-full">
                   <Button
-                  className="w-full"
+                    className="w-full"
                     variant={pathname == "/profile" ? "default" : "ghost"}
                   >
                     <User size={20} />
