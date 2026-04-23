@@ -45,10 +45,12 @@
   --color-subtitle-color: var(--subtitle-color);
 }
 
-/* Custom */
+/* Custom Sizes*/
 :root {
   --links-header-height: 80px;
   --info-header-height: 60px;
+  --dashboard-header-height: 70px;
+  --dashboard-sidebar-width: 190px;
 
   --hero-height: calc(
     100vh - (var(--links-header-height) + var(--info-header-height))
@@ -59,6 +61,18 @@
   --spacing-links-header-height: var(--links-header-height);
   --spacing-info-header-height: var(--info-header-height);
   --spacing-hero-height: var(--hero-height);
+  --spacing-dashboard-sidebar-width: var(--dashboard-sidebar-width);
+  --spacing-dashboard-header-height: var(--dashboard-header-height);
+}
+
+/* Custom Colors */
+:root {
+  --dashboard-bg: #e9eff3;
+  --invalid-color: red;
+}
+@theme inline {
+  --color-dashboard-bg: var(--dashboard-bg);
+  --color-invalid-color: var(--invalid-color);
 }
 
 :root {
@@ -71,8 +85,8 @@
   --popover-foreground: oklch(0.145 0 0);
   --primary: #3e84f5;
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(31.317% 0.00004 271.152);
+  --secondary-foreground: oklch(100% 0.00011 271.152);
   --muted: oklch(0.97 0 0);
   --subtitle-color: #474747;
   --muted-foreground: oklch(0.556 0 0);

@@ -8,12 +8,13 @@ const layerVariants = cva(
       variant: {
         primary: "bg-primary",
         dark: "bg-black",
+        linear: "bg-linear-to-b from-black from-50% to-transparent",
       },
     },
     defaultVariants: {
       variant: "primary",
     },
-  }
+  },
 );
 
 export const Layer = ({

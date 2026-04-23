@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 export const Hero = () => {
   const homeTrans = useTranslations("home");
   return (
-    <section className="h-hero-height relative w-full">
+    <section className="h-hero-height relative w-full mb-20">
       <video
         poster="/home/hero/placeholder.webp"
         preload="none"

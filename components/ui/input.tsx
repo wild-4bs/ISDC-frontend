@@ -53,7 +53,7 @@ export const InputVariants = cva(
       size: "default",
       shape: "default",
     },
-  }
+  },
 );
 
 export const Input = ({
@@ -82,7 +82,7 @@ export const Input = ({
             <div
               className={clsx(
                 "icon absolute top-2/4 -translate-y-2/4 start-2.5 text-muted-foreground pointer-events-none",
-                {}
+                {},
               )}
             >
               {React.cloneElement(
@@ -90,9 +90,9 @@ export const Input = ({
                 {
                   className: cn(
                     (icon.props as { className?: string }).className,
-                    "w-[0.9rem] text-subtitle-color"
+                    "w-[0.9rem] text-subtitle-color",
                   ),
-                }
+                },
               )}
             </div>
           )}
@@ -109,8 +109,8 @@ export const Input = ({
             {...props}
           />
           {error && error.length > 0 && (
-            <div className="error-icon absolute top-2/4 ltr:right-3 rtl:left-3 -translate-y-[46%] pointer-events-none">
-              <AlertCircle />
+            <div className="error-icon absolute top-2/4 ltr:right-3 rtl:left-3 -translate-y-[46%] pointer-events-none text-invalid-color">
+              <AlertCircle size={14} />
             </div>
           )}
           {success && (
@@ -124,7 +124,7 @@ export const Input = ({
             {error.map((error, i: number) => {
               return (
                 <span
-                  className="error text-invalid-color font-medium text-sm first-letter:uppercase inline-block"
+                  className="error text-invalid-color font-medium text-xs first-letter:uppercase inline-block"
                   key={i}
                 >
                   {error}

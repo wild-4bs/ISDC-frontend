@@ -6,68 +6,36 @@ import Facebook from "@/assets/social/facbook.svg";
 import Instagram from "@/assets/social/instagram.svg";
 import Phone from "@/assets/social/phone.svg";
 import Whatsapp from "@/assets/social/whatsapp.svg";
-
-import Container from "./Container";
-
-import { Link, usePathname, useRouter } from "@/i18n/routing";
+import { Link, usePathname } from "@/i18n/routing";
+import { useUserStore } from "@/stores/userStore";
 import clsx from "clsx";
-import { Languages, Menu, User, X } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { LayoutDashboard, Menu, User, X } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
+import Container from "./Container";
 import { Button } from "./ui/button";
 
-import { useState, useTransition } from "react";
-
-const NAV_LINKS = [
+export const NAV_LINKS = [
   { name: "home", path: "/" },
   { name: "projects", path: "/projects" },
   { name: "doctors", path: "/doctors" },
   { name: "news", path: "/news" },
 ];
 
-const NavLinks = ({
-  linksTrans,
-  pathname,
-  onClick,
-}: {
-  linksTrans: (key: string) => string;
-  pathname: string;
-  onClick?: () => void;
-}) => (
-  <>
-    {NAV_LINKS.map((link) => (
-      <li key={link.path}>
-        <Link
-          href={link.path}
-          onClick={onClick}
-          className={clsx(
-            "text-sm leading-5 transition-colors hover:text-primary",
-            pathname === link.path && "font-bold",
-          )}
-        >
-          {linksTrans(link.name)}
-        </Link>
-      </li>
-    ))}
-  </>
-);
+const isActive = (pathname: string, linkPath: string) => {
+  return (
+    pathname === linkPath || (linkPath !== "/" && pathname.startsWith(linkPath))
+  );
+};
 
 export const Header = () => {
   const linksTrans = useTranslations("links");
   const headerTrans = useTranslations("header");
   const commonTrans = useTranslations("common");
+  const { user } = useUserStore();
 
   const pathname = usePathname();
-  const locale = useLocale();
-  const router = useRouter();
-
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isPending, startTransition] = useTransition();
-
-  const toggleLang = () => {
-    startTransition(() => {
-      router.replace(pathname, { locale: locale === "en" ? "ar" : "en" });
-    });
-  };
 
   return (
     <>
@@ -85,7 +53,6 @@ export const Header = () => {
                 <span>+946 782 593 3888</span>
               </div>
             </div>
-
             <div className="flex items-center gap-2 text-sm">
               <span>{headerTrans("location")}</span>
               <Location />
@@ -98,55 +65,66 @@ export const Header = () => {
               <Logo />
             </Link>
             <ul className="hidden md:flex items-center gap-6">
-              <NavLinks linksTrans={linksTrans} pathname={pathname} />
-              <Link href={"/profile"}>
-                <Button variant={pathname == "/profile" ? "default" : "ghost"}>
-                  <User size={20} />
-                </Button>
-              </Link>
-              <Button
-                variant="ghost"
-                onClick={toggleLang}
-                aria-label="Toggle Language"
-              >
-                <Languages size={20} />
-              </Button>
-              <Link href={"/login"}>
-                <Button className="w-full bg-black text-white hover:bg-black/90">
-                  {commonTrans("login")}
-                </Button>
-              </Link>
-              <Button
-                variant="ghost"
-                onClick={() => setSidebarOpen(true)}
-                aria-label="Open Menu"
-                className="md:hidden"
-              >
-                <Menu size={22} />
-              </Button>
+              {NAV_LINKS.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    href={link.path}
+                    className={clsx(
+                      "text-sm leading-5 transition-colors hover:opacity-70",
+                      isActive(pathname, link.path) && "font-bold",
+                    )}
+                  >
+                    {linksTrans(link.name)}
+                  </Link>
+                </li>
+              ))}
+              {user && user.role != "admin" && (
+                <Link href={"/profile"}>
+                  <Button
+                    variant={
+                      isActive(pathname, "/profile") ? "solid" : "outline"
+                    }
+                    size="icon"
+                    // className={clsx({
+                    //   "text-foreground": !isActive(pathname, "/profile"),
+                    // })}
+                  >
+                    <User size={20} />
+                  </Button>
+                </Link>
+              )}
+              {user && user.role == "admin" && (
+                <Link href={"/dashboard"}>
+                  <Button variant={"outline"} size={"icon"}>
+                    <LayoutDashboard size={20} />
+                  </Button>
+                </Link>
+              )}
+              {!user && (
+                <Link href={"/login"}>
+                  <Button theme={"secondary"} size={"sm"}>
+                    {commonTrans("login")}
+                  </Button>
+                </Link>
+              )}
             </ul>
             <Button
               variant="ghost"
-              className="md:hidden"
+              className="md:hidden text-foreground [&_svg]:size-5!"
               onClick={() => setSidebarOpen(true)}
               aria-label="Open Menu"
             >
-              <Menu size={22} />
+              <Menu size={32} strokeWidth={2} />
             </Button>
           </div>
         </Container>
       </header>
-
-      {/* Sidebar */}
       {sidebarOpen && (
         <>
-          {/* Overlay */}
           <div
             className="fixed inset-0 bg-black/50 z-40"
             onClick={() => setSidebarOpen(false)}
           />
-
-          {/* Sidebar Panel */}
           <div className="fixed top-0 right-0 h-full w-[300px] bg-white z-50 shadow-lg animate-slide-left">
             <div className="p-6">
               <div className="flex items-center justify-between mb-8">
@@ -154,37 +132,58 @@ export const Header = () => {
                   variant="ghost"
                   onClick={() => setSidebarOpen(false)}
                   aria-label="Close Menu"
+                  theme={"danger"}
                 >
                   <X size={22} />
                 </Button>
               </div>
-
               <ul className="space-y-4">
-                <NavLinks
-                  linksTrans={linksTrans}
-                  pathname={pathname}
-                  onClick={() => setSidebarOpen(false)}
-                />
+                {NAV_LINKS.map((link) => (
+                  <li key={link.path}>
+                    <Link
+                      href={link.path}
+                      onClick={() => setSidebarOpen(false)}
+                      className={clsx(
+                        "text-sm leading-5 transition-colors hover:text-primary",
+                        pathname === link.path && "font-bold",
+                      )}
+                    >
+                      {linksTrans(link.name)}
+                    </Link>
+                  </li>
+                ))}
               </ul>
-
-              {/* Actions */}
-              <div className="mt-8 space-y-4">
-                <Link href={"/profile"} className="w-full">
-                  <Button
-                    className="w-full"
-                    variant={pathname == "/profile" ? "default" : "ghost"}
-                  >
-                    <User size={20} />
-                  </Button>
-                </Link>
-                <Button variant="ghost" onClick={toggleLang} className="w-full">
-                  <Languages size={20} />
-                </Button>
-                <Link href={"/login"}>
-                  <Button className="w-full bg-black text-white hover:bg-black/90">
-                    {commonTrans("login")}
-                  </Button>
-                </Link>
+              <div className="mt-8 flex flex-col gap-2">
+                {user && user.role != "admin" && (
+                  <Link href={"/profile"}>
+                    <Button
+                      variant={
+                        isActive(pathname, "/profile") ? "solid" : "outline"
+                      }
+                      size="icon"
+                      className="w-full"
+                    >
+                      <User size={20} />
+                    </Button>
+                  </Link>
+                )}
+                {user && user.role == "admin" && (
+                  <Link href={"/dashboard"}>
+                    <Button
+                      variant={"ghost"}
+                      className="text-foreground w-full"
+                    >
+                      <LayoutDashboard size={20} />
+                    </Button>
+                  </Link>
+                )}
+                {!user && (
+                  <Link href={"/login"}>
+                    <Button theme={"secondary"} size={"sm"} className="w-full">
+                      {commonTrans("login")}
+                    </Button>
+                  </Link>
+                )}
               </div>
             </div>
           </div>

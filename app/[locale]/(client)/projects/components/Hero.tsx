@@ -16,7 +16,7 @@ export const Hero = () => {
         />
         <div className="relative text-center z-10 text-white flex flex-col items-center justify-center h-full">
           <h1
-            className="font-bold text-6xl max-sm:text-4xl leading-[108%] mb-1"
+            className="font-bold text-6xl max-sm:text-4xl leading-[120%] mb-1"
             dangerouslySetInnerHTML={{ __html: projectsTrans("title") }}
           ></h1>
           <p className="text-2xl max-sm:text-xl">{projectsTrans("caption")}</p>

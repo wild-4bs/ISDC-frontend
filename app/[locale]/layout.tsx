@@ -1,8 +1,18 @@
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { cn, getDir } from "@/lib/utils";
+import { AuthProvider } from "@/providers/AuthProvider";
+import { QueryProvider } from "@/providers/QueryClientProvider";
 import type { Metadata } from "next";
-import "./globals.css";
-import { getMessages, setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import { getDir } from "@/lib/utils";
+import { getMessages, setRequestLocale } from "next-intl/server";
+import { Tajawal } from "next/font/google";
+import "./globals.css";
+
+const tajawal = Tajawal({
+  subsets: ["arabic"],
+  weight: ["200", "400", "500", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,9 +34,14 @@ export default async function RootLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} dir={dir} suppressHydrationWarning>
-      <body className="antialiased">
+      <body className={cn("antialiased", tajawal.className)}>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <Toaster richColors closeButton />
+          <QueryProvider>
+            <AuthProvider>
+              <TooltipProvider>{children}</TooltipProvider>
+            </AuthProvider>
+          </QueryProvider>
         </NextIntlClientProvider>
       </body>
     </html>
