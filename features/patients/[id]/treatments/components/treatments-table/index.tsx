@@ -43,6 +43,13 @@ const STATUS_OPTIONS: { label: string; value: TreatmentStatus | "all" }[] = [
   { label: "ملغي", value: "cancelled" },
 ];
 
+const STATUS_ORDER: Record<TreatmentStatus, number> = {
+  active: 0,
+  completed: 1,
+  cancelled: 2,
+  on_hold: 3,
+};
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
@@ -70,13 +77,16 @@ export const TreatmentsTable = ({
     page,
   });
 
+  const sorted = data?.payload?.sort(
+    (a, b) => STATUS_ORDER[a.status] - STATUS_ORDER[b.status],
+  );
+
   useEffect(() => {
     if (data?.patient) onPatientLoad(data.patient);
   }, [data?.patient]);
 
-  const treatments = data?.payload ?? [];
   const totalPages = data?.pagination?.totalPages ?? 1;
-  const isEmpty = !isPending && treatments.length === 0;
+  const isEmpty = !isPending && sorted?.length === 0;
 
   const handleSearch = (value: string) => {
     setSearch(value);
@@ -132,7 +142,7 @@ export const TreatmentsTable = ({
           ) : isEmpty ? (
             <TreatmentsEmptyState search={debouncedSearch} />
           ) : (
-            treatments.map((treatment) => (
+            sorted?.map((treatment) => (
               <TreatmentRow
                 key={treatment.id}
                 treatment={treatment}

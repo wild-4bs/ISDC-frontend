@@ -136,12 +136,7 @@ export const TimelineTable = () => {
           ) : isEmpty ? (
             <TimelineEmptyState search={debouncedSearch} />
           ) : (
-            items.map((item) => (
-              <TimelineRow
-                key={item.id}
-                item={item}
-              />
-            ))
+            items.map((item) => <TimelineRow key={item.id} item={item} />)
           )}
         </TableBody>
       </Table>

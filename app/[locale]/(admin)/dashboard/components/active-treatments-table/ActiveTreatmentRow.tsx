@@ -52,7 +52,7 @@ export const ActiveTreatmentRow = ({
       queryClient.invalidateQueries({
         queryKey: treatmentKeys.byPatient(patientId),
       }),
-      queryClient.invalidateQueries({ queryKey: ["treatments"] }),
+      queryClient.invalidateQueries({ queryKey: treatmentKeys.all() }),
     ]);
 
   const handleDelete = () => {

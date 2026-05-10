@@ -53,7 +53,7 @@ export const SingleTreatmentFeature = () => {
 
         <div className="lg:grid grid-cols-12 gap-4">
           {/* ── clinical media ── */}
-          <div className="p-5 border border-input rounded-xl bg-white shadow-xs mt-3 col-span-7">
+          <div className="p-5 border border-input rounded-xl bg-white shadow-xs mt-3 col-span-8">
             <header className="pb-3 border-b border-b-input flex items-center gap-2">
               <ImageIcon className="text-primary" />
               <h2 className="font-bold text-lg">الصور الطبية</h2>

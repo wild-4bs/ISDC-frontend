@@ -19,6 +19,7 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
 import {
+  appointmentKeys,
   appointmentStatusValues,
   NewAppointmentInput,
   newAppointmentSchema,
@@ -74,6 +75,7 @@ export const NewAppointmentDialog = ({
     register,
     clearErrors,
     setError,
+    reset,
     control,
   } = useForm<NewAppointmentInput>({
     resolver: zodResolver(newAppointmentSchema),
@@ -104,10 +106,12 @@ export const NewAppointmentDialog = ({
         }
       },
       onSuccess: async (res) => {
+        await queryClient.invalidateQueries({
+          queryKey: appointmentKeys.all(),
+        });
         toast.success(res.message);
+        reset();
         onSuccess?.();
-
-        await queryClient.invalidateQueries({ queryKey: ["appointments"] });
         await queryClient.invalidateQueries({
           queryKey: treatmentKeys.byPatient(patientId),
         });

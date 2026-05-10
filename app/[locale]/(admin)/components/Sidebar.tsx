@@ -13,7 +13,7 @@ import { useState } from "react";
 
 export const Sidebar = () => {
   const { clear } = useUserStore();
-  const [isPending, setIsPending] = useState(false);
+  const [_, setIsPending] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 

@@ -3,20 +3,21 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import { Card } from "./card";
+import {
+  breakpointClasses,
+  minBreakpointClasses,
+} from "@/providers/row-collapse/index.constants";
+import { MediaStep } from "@/types/common";
 
 function Table({ className, ...props }: React.ComponentProps<"table">) {
   return (
-    <Card
-      data-slot="table-container"
-      className="relative w-full overflow-x-auto p-0 bg-dashboard-bg shadow-dashboard-bg border-input/50"
-    >
+    <div className="relative w-full rounded-xl border overflow-x-auto p-0 bg-dashboard-bg shadow-dashboard-bg border-input/50">
       <table
         data-slot="table"
         className={cn("w-full caption-bottom text-sm", className)}
         {...props}
       />
-    </Card>
+    </div>
   );
 }
 
@@ -71,12 +72,22 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
   );
 }
 
-function TableHead({ className, ...props }: React.ComponentProps<"th">) {
+function TableHead({
+  className,
+  breakpoint,
+  reveal,
+  ...props
+}: React.ComponentProps<"th"> & {
+  breakpoint?: MediaStep;
+  reveal?: MediaStep;
+}) {
   return (
     <th
       data-slot="table-head"
       className={cn(
-        "h-10 px-4 text-start align-middle font-medium whitespace-nowrap text-foreground [&:has([role=checkbox])]:pr-0 *:[[role=checkbox]]:translate-y-0.5",
+        "h-10 px-2 text-start align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 text-sm",
+        breakpoint && breakpointClasses[breakpoint],
+        reveal && minBreakpointClasses[reveal],
         className,
       )}
       {...props}
@@ -84,19 +95,28 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
   );
 }
 
-function TableCell({ className, ...props }: React.ComponentProps<"td">) {
+function TableCell({
+  className,
+  breakpoint,
+  reveal,
+  ...props
+}: React.ComponentProps<"td"> & {
+  breakpoint?: MediaStep;
+  reveal?: MediaStep;
+}) {
   return (
     <td
       data-slot="table-cell"
       className={cn(
-        "p-2 ps-4 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 *:[[role=checkbox]]:translate-y-0.5",
+        "py-3 px-4 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0",
+        breakpoint && breakpointClasses[breakpoint],
+        reveal && minBreakpointClasses[reveal],
         className,
       )}
       {...props}
     />
   );
 }
-
 function TableCaption({
   className,
   ...props

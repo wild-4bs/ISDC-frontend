@@ -24,6 +24,12 @@ export const ActiveTreatmentsTable = ({
     status: "active",
   });
 
+  const sorted = [...(data?.payload ?? [])].sort(
+    (a, b) =>
+      Number(b.completedAppointmentsCount) -
+      Number(a.completedAppointmentsCount),
+  );
+
   return (
     <Card {...props} className={cn("h-fit pb-2", className)}>
       <CardHeader>
@@ -62,7 +68,7 @@ export const ActiveTreatmentsTable = ({
                 </TableCell>
               </TableRow>
             ) : (
-              data?.payload?.map((treatment) => (
+              sorted?.map((treatment) => (
                 <ActiveTreatmentRow
                   treatment={treatment}
                   key={treatment.id}
