@@ -9,7 +9,6 @@ import {
   LogOutIcon,
   Mail,
   MapPin,
-  Phone,
   PhoneIcon,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -41,15 +40,24 @@ export const Footer = () => {
           <div className="mt-2">
             <h3 className="text-base font-bold">تابعنا على:</h3>
             <div className="flex items-center flex-wrap">
-              <Button variant={"ghost"}>
-                <Facebook />
-              </Button>
-              <Button variant={"ghost"}>
-                <Instagram />
-              </Button>
-              <Button variant={"ghost"}>
-                <Phone />
-              </Button>
+              <Link
+                href={
+                  "https://www.facebook.com/p/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A-%D8%A7%D9%84%D8%AA%D8%AE%D8%B5%D8%B5%D9%8A-%D9%84%D8%B7%D8%A8-%D8%A7%D9%84%D8%A7%D8%B3%D9%86%D8%A7%D9%86-100044889823723/?locale=ar_AR"
+                }
+                target="_blank"
+              >
+                <Button variant={"ghost"}>
+                  <Facebook />
+                </Button>
+              </Link>
+              <Link
+                href={"https://www.instagram.com/i.s.d.c_/?__coig_challenged=1"}
+                target="_blank"
+              >
+                <Button variant={"ghost"}>
+                  <Instagram />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -77,11 +85,11 @@ export const Footer = () => {
             </li>
             <li className="flex items-center gap-2 text-sm">
               <Mail width={18} />
-              <span>info@dental-office.com</span>
+              <span>iq.isdc@gmail.com</span>
             </li>
             <li className="flex items-center gap-2 text-sm">
               <PhoneIcon width={18} />
-              <span>+964 7830000124</span>
+              <span>+964 7825933888 - 7725933888</span>
             </li>
           </ul>
         </div>

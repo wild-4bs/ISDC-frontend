@@ -44,13 +44,29 @@ export const Header = () => {
           <Container className="flex justify-between items-center">
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-3">
-                <Facebook />
-                <Instagram />
-                <Whatsapp />
+                <Link
+                  href={
+                    "https://www.facebook.com/p/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A-%D8%A7%D9%84%D8%AA%D8%AE%D8%B5%D8%B5%D9%8A-%D9%84%D8%B7%D8%A8-%D8%A7%D9%84%D8%A7%D8%B3%D9%86%D8%A7%D9%86-100044889823723/?locale=ar_AR"
+                  }
+                  target="_blank"
+                >
+                  <Facebook />
+                </Link>
+                <Link
+                  href={
+                    "https://www.instagram.com/i.s.d.c_/?__coig_challenged=1"
+                  }
+                  target="_blank"
+                >
+                  <Instagram />
+                </Link>
+                <Link href={"https://wa.me/9647825933888"} target="_blank">
+                  <Whatsapp />
+                </Link>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 font-medium text-base">
                 <Phone />
-                <span>+946 782 593 3888</span>
+                <span>+964 7825933888 - 7725933888</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
