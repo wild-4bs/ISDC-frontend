@@ -56,7 +56,7 @@ export const ProjectsFeature = () => {
       <Card className="gap-6">
         <CardHeader>
           <CardTitle>
-            <h1 className="text-xl">محفضة الاعمال</h1>
+            <h1 className="text-xl">محفضة الأعمال</h1>
           </CardTitle>
           <CardAction onClick={() => openDialog("new-project")}>
             إضافة عمل جديد <Plus />

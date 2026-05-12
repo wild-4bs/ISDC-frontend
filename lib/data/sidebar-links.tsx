@@ -26,7 +26,7 @@ export const SidebarLinks: SidebarLink[] = [
     path: "/dashboard/patients",
   },
   {
-    label: "المشاريع",
+    label: "الأعمال",
     icon: <FolderKanban size={18} />,
     path: "/dashboard/projects",
   },

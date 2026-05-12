@@ -17,7 +17,7 @@ const segmentLabels: Record<string, string> = {
   treatments: "العلاجات",
   settings: "الإعدادات",
   statistics: "الإحصائيات",
-  projects: "الاعمال",
+  projects: "الأعمال",
   blogs: "المقالات",
   doctors: "الاطباء",
   timeline: "سجل الاحداث",

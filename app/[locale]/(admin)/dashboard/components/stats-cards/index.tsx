@@ -22,7 +22,7 @@ export const StatsCards = () => {
 
       <StatsCard isPending={isFetching || !data}>
         <StatsCardHeader>
-          <StatsCardTitle>اجمالي المشاريع</StatsCardTitle>
+          <StatsCardTitle>اجمالي الأعمال</StatsCardTitle>
           <FolderKanban size={24} strokeWidth={1} />
         </StatsCardHeader>
         <StatsCardValue>{data?.totalProjects}</StatsCardValue>
